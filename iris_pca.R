@@ -21,5 +21,23 @@ head(decathlon2.active[, 1:6], 4)
 #scale.unit: a logical value. If TRUE, the data are scaled to unit variance before the analysis. This standardization to the same scale avoids some variables to become dominant just because of their large measurement units. It makes variable comparable.
 #ncp: number of dimensions kept in the final results.
 #graph: a logical value. If TRUE a graph is displayed.
-#test
+
+res.pca <- PCA(decathlon2.active, graph = FALSE)
+print(res.pca)
+
+#Visualization and Interpretation
+#Eigenvalues:
+get_eigenvalue(res.pca)
+fviz_eig(res.pca)
+$eig
+
+#Results for individuals and variables:
+ind <- get_pca_ind(res.pca)
+ind
+ind$coord
+#and variables:
+var <- get_pca_var(res.pca)
+var
+
+head(var$contrib, 4)
 
